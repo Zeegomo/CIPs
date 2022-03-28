@@ -52,7 +52,7 @@ Notably, there should be five entries inside a metadata map with key 61284:
 A delegation assigns (a portion of) the ADA controlled by one or more UTxOs on mainnet to the voting key in the sidechain as voting power.  The UTxOs can be identified via the stake address at some designated point in time.
 
 Each delegation therefore contains:
-  - a voting key: simply an ED25519 public key. This is the spending credential in the sidechain that will receive voting power from this delegation. For direct voting it's necessary to have the corresponding private key to cast votes in the sidechain. How this key is created is up to the wallet.
+  - a voting key: simply an ED25519 public key. This is the spending credential in the sidechain that will receive voting power from this delegation. For direct voting it's necessary to have the corresponding private key to cast votes in the sidechain. How this key is created is up to the wallet. To avoid linking voting keys directly with Cardano spending keys, HD wallets should use the a path with the following specific segment: m / 1694' / 1815' / account' / chain / address_index
   - the weight that is associated with this key: this is an unsigned integer (CBOR major type 0) that represents the relative weight of this delegation over the total weight of all delegations in the same registration transaction.
   The weight may range from 0 to 2^32-1.  Any greater value is capped to 2^32-1.
 
